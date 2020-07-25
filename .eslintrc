@@ -1,0 +1,82 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "eslint-config-airbnb-base",
+    // plugin
+    "plugin:eslint-comments/recommended",
+    "plugin:promise/recommended",
+    "plugin:import/recommended",
+    // prettier
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "class-methods-use-this": 0,
+    "no-useless-constructor": 0,
+    // import
+    "import/prefer-default-export": [0],
+    "import/order": [
+      2,
+      {
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/extensions": [
+      1,
+      {
+        "js": "never",
+        "json": "always"
+      }
+    ],
+    // eslint-comment
+    "eslint-comments/disable-enable-pair": [
+      2,
+      {
+        "allowWholeFile": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/typescript",
+        "prettier/@typescript-eslint"
+      ],
+      "rules": {
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      },
+      "parserOptions": {
+        "warnOnUnsupportedTypeScriptVersion": true
+      },
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true
+          }
+        }
+      }
+    },
+    {
+      "files": ["**/*.{test,spec}.{js,ts}"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
+      }
+    }
+  ]
+}
