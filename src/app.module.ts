@@ -3,6 +3,7 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { ComicModule } from "./comic/comic.module";
+import { ReleaseModule } from "./release/release.module";
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ComicModule } from "./comic/comic.module";
       autoSchemaFile: `${process.cwd()}/src/schema.graphql`,
     }),
     ComicModule,
+    ReleaseModule,
   ],
 })
 export class AppModule {}

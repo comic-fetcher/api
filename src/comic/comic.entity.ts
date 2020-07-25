@@ -1,8 +1,10 @@
 /* eslint-disable max-classes-per-file */
 import { Field, ID, ObjectType, registerEnumType } from "@nestjs/graphql";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
 
 import { Paginate } from "src/common/paginate";
+// eslint-disable-next-line import/no-cycle
+import { Release } from "src/release/release.entity";
 
 export enum ComicPlatform {
   COMIC_WALKER = "ComicWalker",
@@ -33,6 +35,10 @@ export class Comic {
     enum: ComicPlatform,
   })
   platform!: ComicPlatform;
+
+  @Field(() => [Release])
+  @OneToMany((type) => Release, (release) => release.comic, { eager: true })
+  releases!: Release;
 }
 
 @ObjectType()
