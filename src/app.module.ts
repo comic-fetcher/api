@@ -17,7 +17,7 @@ import { ComicModule } from "./comic/comic.module";
       autoLoadEntities: true,
     }),
     GraphQLModule.forRoot({
-      autoSchemaFile: `${process.cwd()}src/schema.graphql`,
+      autoSchemaFile: `${process.cwd()}/src/schema.graphql`,
     }),
     ComicModule,
   ],
